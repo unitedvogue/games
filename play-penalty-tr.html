@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="tr" data-theme="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Penalty • Oyna</title>
+  <style>
+    .imageWrapper {
+      width: 110%;
+      height: 40vh;
+      position: relative;
+    }
+
+    .imageWrapper img {
+      width: 95%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .btn-new {
+      text-align: center;
+      cursor: pointer;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      border-radius: 10px;
+      width: 150px;
+      height: 64px;
+      padding: 3px;
+      position: relative;
+      overflow: hidden;
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      box-shadow: -4px -2px 16px rgba(195, 200, 205, .09), 4px 4px 18px rgba(0, 0, 0, .5);
+      font-weight: inherit;
+      font-style: inherit;
+      vertical-align: baseline;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      font-display: block;
+      border: 0;
+      outline: 0;
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+      font-size: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: radial-gradient(50% 91.38% at 50% 0, rgba(82, 195, 243, .19) .01%, rgba(18, 194, 250, .54) .02%, rgba(40, 45, 49, .18) 100%), linear-gradient(315.81deg, #17191c -42.75%, #32383e 123.05%);
+    }
+
+    :root {
+      --bg: #0b0d13;
+      --bg2: #0e1220;
+      --panel: #0f1423cc;
+      --text: #e9ecf5;
+      --muted: #a8b1c5;
+      --border: #2b344966;
+      --brand: #7aa2ff;
+      --brand2: #8d7aff;
+      --radius: 18px;
+      --blur: 16px;
+      --shadow: 0 18px 60px rgba(0, 0, 0, .45)
+    }
+
+    body {
+      margin: 0;
+      font: 400 1rem/1.5 ui-sans-serif, system-ui;
+      background:
+        radial-gradient(70% 90% at 10% 0%, #121a33, transparent 60%),
+        radial-gradient(70% 90% at 100% 20%, #141a31, transparent 55%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      color: var(--text)
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 28px 18px
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 999px;
+      font-weight: 700
+    }
+
+    .btn {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow)
+    }
+
+    .placeholder {
+      height: 360px;
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: var(--muted)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">Penalty — Oyun Sayfası</div>
+      <a class="btn" href="index-en.html">← Geri Dön</a>
+    </header>
+    <section class="panel">
+      <img style="width: 50%;" src="assets/img/penalty-logo.png" alt="">
+
+      <div class="imageWrapper">
+        <img class="ball-place" src="assets/img/5271691220898411743.jpg" alt="">
+        <img class="ball-place" src="assets/img/5271691220898411744.jpg" alt="">
+        <img class="ball-place" src="assets/img/5271691220898411745.jpg" alt="">
+        <img class="ball-place" src="assets/img/5271691220898411746.jpg" alt="">
+        <img class="ball-place" src="assets/img/5271691220898411747.jpg" alt="">
+      </div>
+      <div class="buttonWrapper btn-new _placebet">
+        <div class="btn-bg _bg1"></div>
+        <div class="btn-bg _bg11"></div>
+        <div class="btn-new__border">
+          <div class="btn-bg _bg2"></div>
+          <div class="btn-bg _bg22"></div>
+          <div class="btn-new__inner">
+            <div class="btn-bg _bg1"></div>
+            <div class="btn-bg _bg11"></div>
+            <div class="btn-new__text">
+              <div class="text-wrapper">
+                <div class="text">Oyna</div>
+              </div>
+              <div class="indicator _placebet"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.dataset.theme = saved;
+    var images = document.querySelectorAll("img");
+    let random = Math.floor(Math.random() * 5);
+    images[random].style.zIndex = 999
+    document.querySelector(".btn-new").addEventListener("click", () => {
+      let random = Math.floor(Math.random() * 5);
+      images.forEach(image => {
+        image.style.zIndex = 0
+      });
+      images[random].style.zIndex = 999
+      images[random].style.opacity = 1
+
+    })
+  </script>
+
+  <!-- LOADING OVERLAY: mobile-first, only-on-click -->
+<style>
+  :root{
+    --p:0;                          /* progress % (JS güncelliyor)          */
+    --overlay-alpha:1;           /* arka plan opaklığı (0.25–0.45 öneri) */
+    --blur:8px;
+    --ring: clamp(160px, 48vw, 220px); /* mobilde küçül, masaüstünde büyü   */
+  }
+
+  /* Açıkken kaydırmayı kilitle */
+  html.is-loading, body.is-loading{ overflow:hidden; }
+
+  /* Başlangıçta tamamen gizli */
+  #__loader{ position:fixed; inset:0; display:none; z-index:9999; }
+  #__loader[aria-hidden="false"]{
+    /* sadece açıkken görünür + merkezlenir */
+    display:grid; place-items:center;
+    background:
+      radial-gradient(80vw 80vh at 50% -10%, rgba(96,165,250,0.08), transparent 60%),
+      radial-gradient(100vw 90vh at 90% 120%, rgba(34,211,238,0.10), transparent 60%),
+      rgba(10,15,26,var(--overlay-alpha));
+    backdrop-filter: blur(var(--blur)) saturate(115%);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(115%);
+    animation: fadeIn .22s ease both;
+  }
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes fadeOut{from{opacity:1}to{opacity:0}}
+
+  /* Kart */
+  #__loader .panel{
+    width:min(94vw,520px);
+    background:linear-gradient(180deg,#0f172acc,#0b1325e6);
+    border:1px solid #2a3550; border-radius:20px; padding:22px 18px 18px;
+    box-shadow: 0 20px 60px #0008, inset 0 1px 0 #ffffff12, 0 0 0 1px #0005;
+  }
+  /* İnce kenar efekti */
+  #__loader .panel::before{
+    content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    background:
+      conic-gradient(from 0deg at 50% 50%, #ffffff08 0 25%, transparent 0 50%, #ffffff08 0 75%, transparent 0),
+      linear-gradient(180deg, #ffffff09, transparent 20% 80%, #ffffff05);
+    mask: linear-gradient(#000,#000) content-box, linear-gradient(#000,#000);
+    -webkit-mask: linear-gradient(#000,#000) content-box, linear-gradient(#000,#000);
+    padding:1px;
+  }
+  #__loader .header{ display:flex; align-items:center; gap:10px; margin:4px 4px 10px; color:#e6f0ff }
+  #__loader .pulse{ width:10px; height:10px; border-radius:50%; background:#34d399; box-shadow:0 0 0 0 #34d39966; animation:pulse 1.4s infinite; }
+  @keyframes pulse{0%{box-shadow:0 0 0 0 #34d39966}70%{box-shadow:0 0 0 12px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  #__loader .title{ font-weight:700; letter-spacing:.2px; }
+
+  /* Halka */
+  #__loader .ring{ position:relative; margin:10px auto 12px; width:var(--ring); height:var(--ring); display:grid; place-items:center; }
+  #__loader .ring::before{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    background: conic-gradient(from -90deg, #60a5fa calc(var(--p)*1%), #1f2a44 calc(var(--p)*1%));
+    filter: drop-shadow(0 10px 24px #60a5fa33);
+    -webkit-mask:
+      radial-gradient(circle calc(var(--ring)/2 - 10px), transparent 98%, #000 100%),
+      radial-gradient(circle calc(var(--ring)/2), #000 100%);
+            mask:
+      radial-gradient(circle calc(var(--ring)/2 - 10px), transparent 98%, #000 100%),
+      radial-gradient(circle calc(var(--ring)/2), #000 100%);
+  }
+  #__loader .center{
+    width:calc(var(--ring) - 40px); height:calc(var(--ring) - 40px); border-radius:50%;
+    display:grid; place-items:center; text-align:center; color:#e6f0ff;
+    background: radial-gradient(240px 240px at 60% 40%, #182238, #0c1326 60%);
+    box-shadow: inset 0 2px 10px #000a, inset 0 0 0 1px #ffffff14;
+  }
+  #__loader .percent{ font-size: clamp(28px, 8vw, 42px); line-height:1; font-variant-numeric:tabular-nums; }
+  #__loader .label{ margin-top:6px; color:#9fb2ca; letter-spacing:.3px; display:flex; align-items:center; justify-content:center; gap:6px; font-size:clamp(12px,3.6vw,14px);}
+  #__loader .dots{ display:inline-flex; width:1.3em; justify-content:space-between; }
+  #__loader .dot{ width:.22em; height:.22em; border-radius:50%; background:#9fb2ca; opacity:.35; }
+  #__loader .dot:nth-child(1){ animation: blink 1.2s infinite .0s steps(2,end); }
+  #__loader .dot:nth-child(2){ animation: blink 1.2s infinite .2s steps(2,end); }
+  #__loader .dot:nth-child(3){ animation: blink 1.2s infinite .4s steps(2,end); }
+  @keyframes blink { 50% { opacity: 1 } }
+
+  #__loader .bar{ height:10px; border-radius:999px; overflow:hidden; position:relative; margin:8px 2px 0;
+    background:linear-gradient(180deg,#151e33,#0d1527); box-shadow: inset 0 1px 0 #ffffff10, 0 1px 0 #0008; }
+  #__loader .bar > i{ position:absolute; inset:0; width:calc(var(--p)*1%); display:block;
+    background: repeating-linear-gradient(45deg, #60a5fa 0 16px, #8b5cf6 16px 32px, #22d3ee 32px 48px);
+    filter:saturate(130%); transition: width .10s linear;
+  }
+
+  /* Hareket azaltma tercihine saygı */
+  @media (prefers-reduced-motion: reduce){
+    #__loader .pulse, #__loader .dot, #__loader .ring::before { animation:none !important }
+  }
+</style>
+
+<!-- Overlay DOM (başlangıçta gizli) -->
+<div id="__loader" aria-hidden="true" aria-live="polite">
+  <div class="panel" role="dialog" aria-label="Yükleniyor">
+    <div class="header">
+      <div class="pulse" aria-hidden="true"></div>
+      <div class="title">Loading data</div>
+    </div>
+
+    <div class="ring" aria-hidden="true">
+      <div class="center">
+        <div class="percent"><span id="__percent">0</span>%</div>
+        <div class="label">Loading data
+          <span class="dots" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bar" aria-label="İlerleme durumu"><i id="__bar"></i></div>
+    <div class="footer" id="__hint" style="margin-top:10px; color:#7d93ad; text-align:center; font-size:12.5px;">
+      Sunucu ile bağlantı kuruluyor…
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const overlay  = document.getElementById('__loader');
+  if (!overlay) { console.error('Loader element #__loader bulunamadı'); return; }
+
+  const root     = document.documentElement;
+  const percentE = document.getElementById('__percent');
+  const hint     = document.getElementById('__hint');
+
+  // Geçerli etiketler (lowercase & aksansız karşılaştıracağız)
+  const valid = new Set(['baslat','grac','play','oyna']);
+
+  // Durum: 'idle' | 'open' | 'closing'
+  let state = 'idle', rafId = null, fadeTimer = null;
+
+  // ---- Helpers ----
+  function normalizeLabel(s){
+    // Safari uyumlu aksan temizleme: NFD + [\u0300-\u036f]
+    return (s || '')
+      .trim()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+  }
+
+  function lockScroll(on){
+    document.documentElement.classList.toggle('is-loading', on);
+    document.body.classList.toggle('is-loading', on);
+  }
+
+  function open(){
+    state = 'open';
+    overlay.setAttribute('aria-hidden','false');
+    root.style.setProperty('--p', 0);
+    percentE.textContent = '0';
+    hint.textContent = 'Sunucu ile bağlantı kuruluyor…';
+  }
+
+  function close(){
+    state = 'closing';
+    overlay.style.animation = 'fadeOut .22s ease both';
+    fadeTimer = setTimeout(()=>{
+      overlay.setAttribute('aria-hidden','true');
+      overlay.style.animation = '';
+      state = 'idle';
+      lockScroll(false);
+    }, 240);
+  }
+
+  function animate(duration){
+    const start = performance.now();
+    let last = 0;
+    function step(now){
+      const t = Math.min(1, (now - start) / duration);
+      let eased = 1 - Math.pow(1 - t, 3);
+      const wobble = (Math.sin(now/130) + Math.sin(now/57)) * 0.008;
+      eased = Math.min(1, Math.max(0, eased + wobble));
+      const p = Math.max(last, Math.floor(eased * 100));
+      if (p !== last){ setProgress(p); last = p; }
+      if (t < 1 && state === 'open'){
+        rafId = requestAnimationFrame(step);
+      } else {
+        setProgress(100);
+        if (state === 'open') AppLoader.hide();
+      }
+    }
+    rafId = requestAnimationFrame(step);
+  }
+
+  function setProgress(p){
+    root.style.setProperty('--p', p);
+    percentE.textContent = String(p);
+    if (p >= 8  && p < 30)  hint.textContent = 'Loading data: Şema alınıyor…';
+    if (p >= 30 && p < 55)  hint.textContent = 'Loading data: Kayıtlar çekiliyor…';
+    if (p >= 55 && p < 80)  hint.textContent = 'Loading data: Dönüştürülüyor…';
+    if (p >= 80 && p < 100) hint.textContent = 'Loading data: Son rötuşlar…';
+    if (p === 100)          hint.textContent = 'Tamamlandı!';
+  }
+
+  // ---- Public API ----
+  window.AppLoader = {
+    show(duration=2400){
+      if (state === 'open') return;
+      if (state === 'closing'){ // kapanırkense hemen resetleyip aç
+        clearTimeout(fadeTimer);
+        overlay.style.animation = '';
+        overlay.setAttribute('aria-hidden','true');
+        void overlay.offsetWidth; // reflow
+        state = 'idle';
+      }
+      lockScroll(true);
+      open();
+      animate(duration);
+    },
+    hide(){
+      if (state !== 'open') return;
+      close();
+    },
+    set(p){ setProgress(Math.max(0, Math.min(100, p))); }
+  };
+
+  // ---- SADECE .buttonWrapper üzerinde dinle (mevcut HTML’ine göre) ----
+  const btnWrap = document.querySelector('.buttonWrapper');
+  if (btnWrap){
+    // Capture fazı: metni "Play/Başlat/Grać" iken yakalar
+    btnWrap.addEventListener('click', function(e){
+      // Önce .text, yoksa p, yoksa tüm wrapper metni
+      const labelEl = btnWrap.querySelector('.text') || btnWrap.querySelector('p') || btnWrap;
+      const raw = (labelEl.innerText || labelEl.textContent || '').trim();
+
+      // Aksan & case-insensitive normalize
+      const key = raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); 
+      // "Başlat"->"baslat", "Grać"->"grac", "Play"->"play"
+
+      if (key === 'play' || key === 'baslat' || key === 'grac'){
+        const duration = Number(btnWrap.getAttribute('data-duration')) || 2400;
+        AppLoader.show(duration);
+        // Event akışı devam etsin: senin .btn-new click kodun normal çalışacak
+      }
+    }, { capture: true }); // <-- kritik
+  }else{
+    console.warn('.buttonWrapper bulunamadı');
+  }
+
+  // ---- Açılış / refresh’te göster ----
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const boot = Number(overlay.getAttribute('data-boot-duration')) || 1800;
+    AppLoader.show(boot);
+  });
+  window.addEventListener('pageshow', (evt)=>{
+    if (evt.persisted){
+      const boot = Number(overlay.getAttribute('data-boot-duration')) || 1800;
+      AppLoader.show(boot);
+    }
+  });
+
+  // ESC ile kapat (opsiyonel)
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape' && state === 'open'){
+      AppLoader.hide();
+    }
+  });
+})();
+</script>
+
+
+
+
+
+<!-- /LOADER -->
+</body>
+
+</html>
