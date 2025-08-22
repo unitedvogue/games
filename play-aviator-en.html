@@ -688,11 +688,11 @@
   function setProgress(p){
     root.style.setProperty('--p', p);
     percentE.textContent = String(p);
-    if (p >= 8  && p < 30)  hint.textContent = 'Loading data: Şema alınıyor…';
-    if (p >= 30 && p < 55)  hint.textContent = 'Loading data: Kayıtlar çekiliyor…';
-    if (p >= 55 && p < 80)  hint.textContent = 'Loading data: Dönüştürülüyor…';
-    if (p >= 80 && p < 100) hint.textContent = 'Loading data: Son rötuşlar…';
-    if (p === 100)          hint.textContent = 'Tamamlandı!';
+    if (p >= 8  && p < 30)  hint.textContent = 'Loading data: Retrieving schema…';
+    if (p >= 30 && p < 55)  hint.textContent = 'Loading data: Retrieving records…';
+    if (p >= 55 && p < 80)  hint.textContent = 'Loading data: Converting…';
+    if (p >= 80 && p < 100) hint.textContent = 'Loading data: Finishing touches…';
+    if (p === 100)          hint.textContent = 'Done!';
   }
 
   // ---- Public API ----
